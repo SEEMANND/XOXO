@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The best things in life are worth waiting for, fighting for, believing in, and just never letting go.</title>
+  <style>
+    body {
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
+      font-family: 'Ink Free', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 55px;
+    }
+
+    #timer-container {
+      text-align: center;
+      margin-top: 200px;
+    }
+
+    #timer {
+      font-size: 250px;
+    }
+  </style>
+</head>
+<body>
+  <h1>The best things in life are worth waiting for, fighting for, believing in, and just never letting go.</h1>
+  <div id="timer-container">
+    <div id="timer"></div>
+  </div>
+
+  <script>
+    function updateTimer() {
+      var expiryDate = new Date();
+      expiryDate.setDate(expiryDate.getDate() + 58);
+      expiryDate.setHours(12, 0, 0, 0);
+
+      var now = new Date();
+      var remainingTime = expiryDate - now;
+
+      // Check if the timer has expired
+      if (remainingTime <= 0) {
+        document.getElementById("timer").textContent = "Timer expired!";
+        return;
+      }
+
+      var days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+      document.getElementById("timer").textContent = days + " : " + hours + " : " + minutes + " : " + seconds;
+
+      setTimeout(updateTimer, 1000);
+    }
+
+    // Start the countdown timer
+    updateTimer();
+  </script>
+</body>
+</html>
